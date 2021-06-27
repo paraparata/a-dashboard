@@ -1,0 +1,51 @@
+@mixin flex-w-gap($direction, $gap) {
+  display: flex;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+@mixin grid-w-gap($gap, $template-columns: 1fr 1fr, $template-rows: 1fr 1fr) {
+  display: grid;
+  grid-template-columns: $template-columns;
+  grid-template-rows: $template-rows;
+  gap: $gap;
+}
+
+.root {
+  padding: 2rem;
+
+  @include flex-w-gap(column, 2.5rem);
+
+  & > main {
+    flex: 1;
+  }
+}
+
+.header {
+  @include flex-w-gap(column, 2rem);
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+
+    & > div {
+      @include flex-w-gap(row, 1.5rem);
+    }
+  }
+}
+
+.main {
+  @include grid-w-gap(2rem 1.5rem);
+
+  & > div:nth-child(2) {
+    @include grid-w-gap(1rem);
+  }
+}
+
+.content {
+  padding: 0.4rem 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-grey-light);
+}
