@@ -1,13 +1,25 @@
+:root {
+  --color-yellow: hsla(47.95deg, 100%, 50%, 1);
+  --color-yellow-light: hsla(47.95deg, 100%, 65%, 1);
+  --color-grey-light: hsla(47.95deg, 0%, 85%, 1);
+  --color-grey-base: hsla(47.95deg, 0%, 22%, 1);
+  --color-grey-dark: hsla(47.95deg, 0%, 10%, 1);
+
+  --color-yellow-transparent: hsla(47.95deg, 100%, 50%, 0.5);
+  --color-yellow-dark-transparent: hsla(47.95deg, 100%, 5%, 0.5);
+  --color-grey-base-transparent: hsla(47.95deg, 0%, 22%, 0.5);
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
