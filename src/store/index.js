@@ -5,6 +5,8 @@ export {
   default as mainMenuReducer,
   slice,
   toggle,
+  enableMenu,
+  showMenu,
   activateMenu,
   selectToggled,
   selectMenus,
