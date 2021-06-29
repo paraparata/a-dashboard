@@ -1,5 +1,15 @@
 export default function wordsNormalizer(words) {
-  const EXCEPTION_THREE = ["the", "are", "is", "in", "and"];
+  const EXCEPTION_THREE = [
+    "the",
+    "are",
+    "is",
+    "in",
+    "and",
+    "my",
+    "add",
+    "tax",
+    "all",
+  ];
   words = words.split(/[-_]/g);
 
   return words
