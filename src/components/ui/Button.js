@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./Button.module.scss";
 
-const Button = ({ children, ...props }) => {
+const Button = ({ warning = false, children, ...props }) => {
   return (
-    <button className={styles.root} {...props}>
+    <button className={styles.root} data-warning={warning} {...props}>
       {children}
     </button>
   );

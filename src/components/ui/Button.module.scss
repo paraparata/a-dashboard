@@ -12,4 +12,9 @@
   &:hover {
     background: var(--color-yellow-light);
   }
+
+  &[data-warning="true"] {
+    color: black;
+    background: red;
+  }
 }
