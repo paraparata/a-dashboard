@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { activateMenu, selectActiveMenu } from "../../store";
 import wordsNormalizer from "../../libs/wordsNormalizer";
 
 import styles from "./NavAccordionButton.module.scss";
-import { Chevron } from "../icons";
+import { Chevron, Eye, EyeSlash, Pin } from "../icons";
 
 const NavAccordionButton = ({
   id,
@@ -12,13 +12,11 @@ const NavAccordionButton = ({
   isAllowed = true,
   childs = [],
 }) => {
-  const [isSubOpen, setIsSubOpen] = useState(isShowed);
   const activeMenu = useSelector(selectActiveMenu);
   const dispatch = useDispatch();
 
   const stateStyle = !isAllowed
     ? {
-        cursor: "not-allowed",
         color: "var(--color-grey-base)",
         background: "var(--color-yellow-dark-transparent)",
       }
@@ -30,26 +28,24 @@ const NavAccordionButton = ({
     : undefined;
 
   const handleOnSubOpen = () => {
-    if (isAllowed) {
-      setIsSubOpen((state) => !state);
-
-      if (childs.length === 0) {
-        dispatch(activateMenu(id));
-      }
-    }
+    dispatch(activateMenu(id));
   };
 
   return (
     <li className={styles.root}>
-      <span style={stateStyle} onClick={handleOnSubOpen}>
-        {wordsNormalizer(id)}
-        {childs.length !== 0 && (
-          <Chevron className={styles.chevron} data-expanded={!isSubOpen} />
-        )}
-      </span>
+      <div style={stateStyle} onClick={handleOnSubOpen}>
+        <div>
+          {childs.length !== 0 && (
+            <Chevron className={styles.chevron} data-expanded={!isShowed} />
+          )}
+          <span>{wordsNormalizer(id)}</span>
+          {id === activeMenu && <Pin color="red" />}
+        </div>
+        <div>{isShowed ? <Eye /> : <EyeSlash />}</div>
+      </div>
 
       {childs.length !== 0 && (
-        <ul className={styles.showed} data-expanded={!isSubOpen}>
+        <ul className={styles.showed} data-expanded={!isShowed}>
           {childs.map((child, index) => {
             return (
               <NavAccordionButton

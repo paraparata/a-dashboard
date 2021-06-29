@@ -1,7 +1,15 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectToggled, selectActiveMenu, toggle } from "../../store";
+import {
+  selectToggled,
+  selectMenus,
+  selectActiveMenu,
+  toggle,
+  enableMenu,
+  showMenu,
+} from "../../store";
 import wordsNormalizer from "../../libs/wordsNormalizer";
+import findNestedObj from "../../libs/findNestedObj";
 
 import styles from "./MainView.module.scss";
 import { Button } from "../ui";
@@ -9,8 +17,12 @@ import { Close, Menu } from "../icons";
 
 const MainView = ({ ...props }) => {
   const isMenuToggled = useSelector(selectToggled);
+  const menus = useSelector(selectMenus);
   const activeMenu = useSelector(selectActiveMenu);
   const dispatch = useDispatch();
+
+  const isAllowed = findNestedObj(menus, "id", activeMenu).isAllowed;
+  const isShowed = findNestedObj(menus, "id", activeMenu).isShowed;
 
   return (
     <div className={styles.root} {...props}>
@@ -34,7 +46,18 @@ const MainView = ({ ...props }) => {
         </div>
         <div>
           <div>
-            <span className={styles.content}>Something 1</span>
+            <Button
+              warning={isAllowed}
+              onClick={() => dispatch(enableMenu(activeMenu))}
+            >
+              {isAllowed ? "Disable" : "Enable"}
+            </Button>
+            <Button
+              warning={isShowed}
+              onClick={() => dispatch(showMenu(activeMenu))}
+            >
+              {isShowed ? "Hide" : "Show"}
+            </Button>
           </div>
           <div>
             <span className={styles.content}>Sub Something 1</span>

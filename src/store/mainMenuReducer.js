@@ -8,7 +8,7 @@ export const slice = createSlice({
   initialState: {
     toggled: true,
     menus: DUMMY_DATA,
-    activeMenu: DUMMY_DATA[0],
+    activeMenu: DUMMY_DATA[0].id,
   },
   reducers: {
     toggle: (state) => {
@@ -23,7 +23,7 @@ export const slice = createSlice({
       targetMenu.isShowed = !targetMenu.isShowed;
     },
     activateMenu: (state, action) => {
-      state.activeMenu = findNestedObj(state.menus, "id", action.payload);
+      state.activeMenu = action.payload;
     },
   },
 });
