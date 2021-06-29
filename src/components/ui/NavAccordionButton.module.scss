@@ -19,7 +19,7 @@
     background: var(--color-grey-base-transparent);
     border-radius: 4px;
 
-    & > div:nth-child(1) {
+    & > div {
       display: flex;
       align-items: center;
       gap: 0.5rem;
